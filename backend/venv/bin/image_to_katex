@@ -1,0 +1,6 @@
+#!/Users/tariq/Downloads/FinalProject/ai-study-assistant/backend/venv/bin/python3
+import sys
+from katex.cli import image_to_katex
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(image_to_katex())
