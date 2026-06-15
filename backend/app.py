@@ -105,9 +105,6 @@ CRITICAL RULES:
 - Do NOT write a summary or concluding paragraph.
 - Do NOT use phrases like "In summary", "In conclusion", or "Overall".
 - Stop after the last concept paragraph.
-- Randomize which option (A, B, C, or D) is the correct answer across questions.
-- Do NOT put the correct answer as option A more than 25% of the time.
-- Distribute correct answers evenly across A, B, C, and D positions.
 """
 
 SUBJECT_PROMPTS = {
@@ -451,6 +448,7 @@ Requirements:
 - Keep each answer choice under 15 words when possible.
 - Do not use absolute words like "exact", "always", or "only" unless the study notes clearly support them.
 - Return ONLY valid JSON — no markdown, no backticks, no preamble.
+- Randomize which option (A, B, C, or D) is the correct answer across questions.
 
 Format:
 [
