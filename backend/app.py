@@ -444,7 +444,6 @@ Format:
 Study Notes:
 {latest_study_notes}
 """
-
     try:
         response = client.responses.create(
             model="gpt-4.1-mini",
@@ -458,47 +457,38 @@ Study Notes:
         quiz_text = quiz_text.strip()
 
         quiz = json.loads(quiz_text)
+
         import random
 
-for q in quiz:
-    correct_answer = q["answer"]
-    options = q["options"]
+        for q in quiz:
+            correct_answer = q["answer"]
+            options = q["options"]
 
-    correct_text = correct_answer.split(")", 1)[1].strip()
+            correct_text = correct_answer.split(")", 1)[1].strip()
 
-    option_texts = [
-        option.split(")", 1)[1].strip()
-        for option in options
-    ]
+            option_texts = [
+                option.split(")", 1)[1].strip()
+                for option in options
+            ]
 
-    random.shuffle(option_texts)
+            random.shuffle(option_texts)
 
-    labels = ["A)", "B)", "C)", "D)"]
+            labels = ["A)", "B)", "C)", "D)"]
 
-    new_options = [
-        f"{labels[i]} {option_texts[i]}"
-        for i in range(4)
-    ]
+            new_options = [
+                f"{labels[i]} {option_texts[i]}"
+                for i in range(4)
+            ]
 
-    new_answer = ""
+            new_answer = ""
 
-    for option in new_options:
-        if option.split(")", 1)[1].strip() == correct_text:
-            new_answer = option
-            break
+            for option in new_options:
+                if option.split(")", 1)[1].strip() == correct_text:
+                    new_answer = option
+                    break
 
-    q["options"] = new_options
-    q["answer"] = new_answer
-
-    new_answer = ""
-
-    for option in new_options:
-        if option.split(")", 1)[1].strip() == correct_text:
-            new_answer = option
-            break
-
-    q["options"] = new_options
-    q["answer"] = new_answer
+            q["options"] = new_options
+            q["answer"] = new_answer
 
         if latest_upload_id:
             conn = sqlite3.connect(DATABASE)
@@ -518,9 +508,6 @@ for q in quiz:
     except Exception as e:
         print(e)
         return jsonify({"error": "Quiz generation failed"}), 500
-
-
-# ── Flashcards ───────────────────────────────────────────────────────────
 
 @app.route("/generate-flashcards", methods=["GET"])
 def generate_flashcards():
