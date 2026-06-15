@@ -173,9 +173,26 @@ Requirements:
 }
 
 DIFFICULTY_ADDONS = {
-    "beginner": "Use simple language. Explain every term as if the student has no prior knowledge.",
-    "intermediate": "Assume the student has basic familiarity with the subject.",
-    "advanced": "Assume strong prior knowledge. Include nuance and deeper analysis only when supported by the material.",
+    "beginner": """
+Use simple wording.
+Ask mostly definition and recall questions.
+Avoid tricky answer choices.
+Each question should test one basic idea.
+""",
+
+    "intermediate": """
+Assume basic familiarity with the subject.
+Ask a mix of definition, concept, and application questions.
+Include some questions that require comparing ideas or choosing the best explanation.
+""",
+
+    "advanced": """
+Assume strong prior knowledge.
+Ask application, analysis, and scenario-based questions.
+Use more challenging distractors.
+Require the student to apply concepts, compare tradeoffs, identify edge cases, or reason through examples.
+Avoid simple definition-only questions.
+"""
 }
 
 QUIZ_SUBJECT_PROMPTS = {
@@ -428,6 +445,12 @@ Requirements:
 - Each question must have exactly 4 answer choices labelled A), B), C), D).
 - Only one answer is correct.
 - The correct answer must exactly match one of the four answer choices.
+- Make all answer choices similar in length and style.
+- Do not make the correct answer noticeably longer or more detailed than the incorrect answers.
+- Distractors must be plausible and based on related concepts from the notes.
+- Avoid obvious wrong answers.
+- Keep each answer choice under 15 words when possible.
+- Do not use absolute words like "exact", "always", or "only" unless the study notes clearly support them.
 - Return ONLY valid JSON — no markdown, no backticks, no preamble.
 
 Format:
