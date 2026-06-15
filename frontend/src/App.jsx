@@ -789,11 +789,19 @@ function App() {
 
   const handleDeleteHistory = async (id) => {
     try {
-      await axios.delete(`${API}/delete-history/${id}`);
+      const userId = localStorage.getItem("userId");
+  
+      await axios.delete(`${API}/delete-history/${id}`, {
+        params: { user_id: userId },
+      });
+  
       setHistory(history.filter((item) => item.id !== id));
-    } catch { alert("Could not delete history item."); }
+    } catch {
+      alert("Could not delete history item.");
+    }
   };
 
+  
   const handleAnswerChange = (qi, opt) => setSelectedAnswers({ ...selectedAnswers, [qi]: opt });
 
   const handleSubmitQuiz = async () => {

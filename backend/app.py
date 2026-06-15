@@ -642,17 +642,24 @@ def get_history():
 
     return jsonify({"history": history})
 
-
 @app.route("/delete-history/<int:upload_id>", methods=["DELETE"])
 def delete_history(upload_id):
-    if not current_user_id:
+    user_id = request.args.get("user_id") or current_user_id
+
+    if not user_id:
         return jsonify({"error": "Please log in first"}), 401
-    conn = sqlite3.connect(DATABASE)
+
+    conn = sqlite3.connect(DATABASE, timeout=30)
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM uploads WHERE id = ? AND user_id = ?",
-                   (upload_id, current_user_id))
+
+    cursor.execute("""
+        DELETE FROM uploads
+        WHERE id = ? AND user_id = ?
+    """, (upload_id, user_id))
+
     conn.commit()
     conn.close()
+
     return jsonify({"message": "History item deleted"})
 
 
