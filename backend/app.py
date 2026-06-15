@@ -105,6 +105,9 @@ CRITICAL RULES:
 - Do NOT write a summary or concluding paragraph.
 - Do NOT use phrases like "In summary", "In conclusion", or "Overall".
 - Stop after the last concept paragraph.
+- Randomize which option (A, B, C, or D) is the correct answer across questions.
+- Do NOT put the correct answer as option A more than 25% of the time.
+- Distribute correct answers evenly across A, B, C, and D positions.
 """
 
 SUBJECT_PROMPTS = {
@@ -455,6 +458,47 @@ Study Notes:
         quiz_text = quiz_text.strip()
 
         quiz = json.loads(quiz_text)
+        import random
+
+for q in quiz:
+    correct_answer = q["answer"]
+    options = q["options"]
+
+    correct_text = correct_answer.split(")", 1)[1].strip()
+
+    option_texts = [
+        option.split(")", 1)[1].strip()
+        for option in options
+    ]
+
+    random.shuffle(option_texts)
+
+    labels = ["A)", "B)", "C)", "D)"]
+
+    new_options = [
+        f"{labels[i]} {option_texts[i]}"
+        for i in range(4)
+    ]
+
+    new_answer = ""
+
+    for option in new_options:
+        if option.split(")", 1)[1].strip() == correct_text:
+            new_answer = option
+            break
+
+    q["options"] = new_options
+    q["answer"] = new_answer
+
+    new_answer = ""
+
+    for option in new_options:
+        if option.split(")", 1)[1].strip() == correct_text:
+            new_answer = option
+            break
+
+    q["options"] = new_options
+    q["answer"] = new_answer
 
         if latest_upload_id:
             conn = sqlite3.connect(DATABASE)
