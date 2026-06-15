@@ -376,9 +376,9 @@ Study Material:
 
     try:
         response = client.responses.create(
-            model="gpt-4.1-mini",
+            model="gpt-5.5-2026-04-23",
             input=prompt,
-            temperature=0
+            temperature=0.3
         )
 
         summary = response.output_text
@@ -469,7 +469,7 @@ Study Notes:
 """
     try:
         response = client.responses.create(
-            model="gpt-4.1-mini",
+            model="gpt-5.5-2026-04-23" ,
             input=prompt,
             temperature=0
         )
@@ -634,7 +634,7 @@ SOURCE DOCUMENT:
 
     try:
         response = client.responses.create(
-            model="gpt-4.1-mini",
+            model="gpt-5.5-2026-04-23",
             input=prompt,
             temperature=0
         )
