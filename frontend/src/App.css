@@ -474,10 +474,18 @@ body {
   color: var(--text-2);
   max-height: 440px;
   overflow-y: auto;
+
+  text-align: left;
 }
 
-.notes-content p { margin-bottom: 12px; }
-.notes-content p:last-child { margin-bottom: 0; }
+.notes-content p {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.notes-content p:last-child {
+  margin-bottom: 0;
+}
 
 .preview-pre {
   background: #0a0a0a;
