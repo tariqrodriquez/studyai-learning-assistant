@@ -632,7 +632,7 @@ body {
 .badge-danger { background: rgba(220,38,38,.15);  color: #f87171; }
 
 /* ── Flashcard ────────────────────────────────────────────────────────────── */
-..flashcard-wrap {
+.flashcard-wrap {
   perspective: 1200px;
   cursor: pointer;
   margin-bottom: 20px;
