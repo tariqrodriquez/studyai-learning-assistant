@@ -377,8 +377,7 @@ Study Material:
     try:
         response = client.responses.create(
             model="gpt-5.5-2026-04-23",
-            input=prompt,
-            temperature=0.3
+            input=prompt
         )
 
         summary = response.output_text
@@ -470,8 +469,7 @@ Study Notes:
     try:
         response = client.responses.create(
             model="gpt-5.5-2026-04-23" ,
-            input=prompt,
-            temperature=0
+            input=prompt
         )
 
         quiz_text = response.output_text
@@ -635,8 +633,7 @@ SOURCE DOCUMENT:
     try:
         response = client.responses.create(
             model="gpt-5.5-2026-04-23",
-            input=prompt,
-            temperature=0
+            input=prompt
         )
         result = response.output_text.replace("```json","").replace("```","").strip()
         verified = json.loads(result)
