@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API = "http://127.0.0.1:5000";
+const API = "https://studyai-learning-assistant.onrender.com";
 
 // ─── KaTeX renderer ──────────────────────────────────────────────────────────
 // Renders inline $...$ math expressions using KaTeX if available,
