@@ -186,7 +186,7 @@ DIFFICULTY_ADDONS_QUIZ = {
     "intermediate": """
 - Ask questions that require understanding concepts, not just recalling facts.
 - Include questions that ask why or how something works.
-- Distractors should be plausible but clearly wrong to someone who studied.
+- Distractors should be plausible and based of study material. Make the user actually think.
 - Example: "Why do plants need CO2?" or "How does the greenhouse effect work?"
 """,
     "advanced": """
