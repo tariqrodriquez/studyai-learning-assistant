@@ -169,27 +169,31 @@ Requirements:
 """,
 }
 
-DIFFICULTY_ADDONS = {
+DIFFICULTY_ADDONS_NOTES = {
+    "beginner": "Use simple language. Explain every term as if the student has no prior knowledge.",
+    "intermediate": "Assume the student has basic familiarity with the subject.",
+    "advanced": "Assume strong prior knowledge. Include nuance, edge cases, and deeper analysis.",
+}
+
+DIFFICULTY_ADDONS_QUIZ = {
     "beginner": """
 Use simple wording.
 Ask mostly definition and recall questions.
 Avoid tricky answer choices.
 Each question should test one basic idea.
 """,
-
     "intermediate": """
 Assume basic familiarity with the subject.
 Ask a mix of definition, concept, and application questions.
 Include some questions that require comparing ideas or choosing the best explanation.
 """,
-
     "advanced": """
 Assume strong prior knowledge.
 Ask application, analysis, and scenario-based questions.
 Use more challenging distractors.
 Require the student to apply concepts, compare tradeoffs, identify edge cases, or reason through examples.
 Avoid simple definition-only questions.
-"""
+""",
 }
 
 QUIZ_SUBJECT_PROMPTS = {
@@ -354,10 +358,7 @@ def summarize_text():
     subject = latest_subject_type
 
     base_prompt = SUBJECT_PROMPTS.get(subject, SUBJECT_PROMPTS["general"])
-    diff_addon = DIFFICULTY_ADDONS.get(
-        difficulty,
-        DIFFICULTY_ADDONS["intermediate"]
-    )
+    diff_addon = DIFFICULTY_ADDONS_NOTES.get(difficulty, DIFFICULTY_ADDONS_NOTES["intermediate"])
 
     prompt = f"""
 {base_prompt}
@@ -425,7 +426,7 @@ def generate_quiz():
 
     difficulty = request.args.get("difficulty", "intermediate")
     subject = latest_subject_type
-    diff_addon = DIFFICULTY_ADDONS.get(difficulty, DIFFICULTY_ADDONS["intermediate"])
+    diff_addon = DIFFICULTY_ADDONS_QUIZ.get(difficulty, DIFFICULTY_ADDONS_QUIZ["intermediate"])
     quiz_instructions = QUIZ_SUBJECT_PROMPTS.get(subject, QUIZ_SUBJECT_PROMPTS["general"])
 
     prompt = f"""
@@ -535,7 +536,7 @@ def generate_flashcards():
 
     difficulty = request.args.get("difficulty", "intermediate")
     subject = latest_subject_type
-    diff_addon = DIFFICULTY_ADDONS.get(difficulty, DIFFICULTY_ADDONS["intermediate"])
+    diff_addon = DIFFICULTY_ADDONS_NOTES.get(difficulty, DIFFICULTY_ADDONS_NOTES["intermediate"])
 
     prompt = f"""
 You are an AI study assistant creating flashcards.
