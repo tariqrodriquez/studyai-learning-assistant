@@ -433,14 +433,19 @@ function UploadPage({
                 <div className="quiz-q" key={qi}>
                   <div className="quiz-q-text">{qi + 1}. <MathText text={q.question} /></div>
                   {q.options.map((opt, oi) => (
-                    <div
-                      key={oi}
-                      className={`quiz-option ${selectedAnswers[qi] === opt ? "selected" : ""}`}
-                      onClick={() => score === null && onAnswerChange(qi, opt)}
-                      style={{ cursor: score !== null ? "default" : "pointer" }}
-                    >
-                      <div className="radio-dot"><div className="inner-dot" /></div>
-                      <MathText text={opt} />
+  <div
+    key={oi}
+    className={`quiz-option ${selectedAnswers[qi] === opt ? "selected" : ""}`}
+    onClick={() => score === null && onAnswerChange(qi, opt)}
+    style={{ cursor: score !== null ? "default" : "pointer" }}
+  >
+    <div className="radio-dot">
+      <div className="inner-dot" />
+    </div>
+
+    <MathText text={opt} />
+  </div>
+))}
                       {score !== null && opt === q.answer && (
                         <span className="badge badge-green" style={{ marginLeft: "auto" }}>
                           <i className="ti ti-check" aria-hidden="true" /> Correct
