@@ -423,61 +423,91 @@ function UploadPage({
             </div>
           )}
 
-          {/* Quiz tab */}
-          {view === "quiz" && quiz.length > 0 && (
-            <div className="card">
-              <div className="card-title">
-                <i className="ti ti-list-check" aria-hidden="true" /> Quiz — {quiz.length} questions
-              </div>
-              {quiz.map((q, qi) => (
-                <div className="quiz-q" key={qi}>
-                  <div className="quiz-q-text">{qi + 1}. <MathText text={q.question} /></div>
-                  {q.options.map((opt, oi) => (
-  <div
-    key={oi}
-    className={`quiz-option ${selectedAnswers[qi] === opt ? "selected" : ""}`}
-    onClick={() => score === null && onAnswerChange(qi, opt)}
-    style={{ cursor: score !== null ? "default" : "pointer" }}
-  >
-    <div className="radio-dot">
-      <div className="inner-dot" />
+{/* Quiz tab */}
+{view === "quiz" && quiz.length > 0 && (
+  <div className="card">
+    <div className="card-title">
+      <i className="ti ti-list-check" aria-hidden="true" /> Quiz — {quiz.length} questions
     </div>
 
-    <MathText text={opt} />
-  </div>
-))}
-                      {score !== null && opt === q.answer && (
-                        <span className="badge badge-green" style={{ marginLeft: "auto" }}>
-                          <i className="ti ti-check" aria-hidden="true" /> Correct
-                        </span>
-                      )}
-                      {score !== null && selectedAnswers[qi] === opt && opt !== q.answer && (
-                        <span className="badge badge-danger" style={{ marginLeft: "auto" }}>
-                          <i className="ti ti-x" aria-hidden="true" /> Wrong
-                        </span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
-              {score === null ? (
-                <button className="btn btn-primary" onClick={onSubmitQuiz}>
-                  <i className="ti ti-send" aria-hidden="true" /> Submit quiz
-                </button>
-              ) : (
-                <div className="score-result">
-                  <div className="score-big">{score}/{quiz.length}</div>
-                  <div className="score-label">
-                    {Math.round((score / quiz.length) * 100)}% —{" "}
-                    {score === quiz.length ? "🎉 Perfect!" : score >= quiz.length * 0.7 ? "👍 Nice work!" : "📖 Keep studying!"}
-                  </div>
-                </div>
-              )}
+    {quiz.map((q, qi) => (
+      <div className="quiz-q" key={qi}>
+        <div className="quiz-q-text">
+          {qi + 1}. <MathText text={q.question} />
+        </div>
+
+        {q.options.map((opt, oi) => (
+          <div
+            key={oi}
+            className={`quiz-option ${
+              selectedAnswers[qi] === opt ? "selected" : ""
+            }`}
+            onClick={() =>
+              score === null && onAnswerChange(qi, opt)
+            }
+            style={{
+              cursor: score !== null ? "default" : "pointer",
+            }}
+          >
+            <div className="radio-dot">
+              <div className="inner-dot" />
             </div>
-          )}
-        </>
-      )}
-    </div>
+
+            <MathText text={opt} />
+
+            {score !== null && opt === q.answer && (
+              <span
+                className="badge badge-green"
+                style={{ marginLeft: "auto" }}
+              >
+                <i className="ti ti-check" aria-hidden="true" /> Correct
+              </span>
+            )}
+
+            {score !== null &&
+              selectedAnswers[qi] === opt &&
+              opt !== q.answer && (
+                <span
+                  className="badge badge-danger"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <i className="ti ti-x" aria-hidden="true" /> Wrong
+                </span>
+              )}
+          </div>
+        ))}
+      </div>
+    ))}
+
+    {score === null ? (
+      <button
+        className="btn btn-primary"
+        onClick={onSubmitQuiz}
+      >
+        <i className="ti ti-send" aria-hidden="true" /> Submit quiz
+      </button>
+    ) : (
+      <div className="score-result">
+        <div className="score-big">
+          {score}/{quiz.length}
+        </div>
+
+        <div className="score-label">
+          {Math.round((score / quiz.length) * 100)}% —{" "}
+          {score === quiz.length
+            ? "🎉 Perfect!"
+            : score >= quiz.length * 0.7
+            ? "👍 Nice work!"
+            : "📖 Keep studying!"}
+        </div>
+      </div>       
+    )}             
+  </div>           
+)}                 
+
+        </>        
+      )}          
+    </div>         
   );
 }
 
@@ -530,9 +560,9 @@ function HistoryPage({ history, onDelete, onViewNotes, onViewQuiz, onViewFlashca
               </button>
             </div>
           </div>
-        ))
+        ))  
       )}
-    </div>
+    </div> 
   );
 }
 
