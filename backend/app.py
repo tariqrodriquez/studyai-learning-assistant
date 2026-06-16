@@ -135,6 +135,7 @@ Requirements:
 - Explain processes clearly using only the provided material.
 - Do NOT use markdown headings, bullet points, bold text, or code fences.
 - Write in clear paragraphs only.
+- Write all chemical formulas in LaTeX with dollar signs, for example $CO_2$, $H_2O$.
 """,
 
     "cs": """
