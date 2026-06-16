@@ -178,22 +178,24 @@ DIFFICULTY_ADDONS_NOTES = {
 
 DIFFICULTY_ADDONS_QUIZ = {
     "beginner": """
-Use simple wording.
-Ask mostly definition and recall questions.
-Avoid tricky answer choices.
-Each question should test one basic idea.
+- Ask simple recall and definition questions.
+- Each question tests one fact directly stated in the notes.
+- Answer choices should be clearly distinct with one obvious correct answer.
+- Example: "What is photosynthesis?" or "What does CO2 stand for?"
 """,
     "intermediate": """
-Assume basic familiarity with the subject.
-Ask a mix of definition, concept, and application questions.
-Include some questions that require comparing ideas or choosing the best explanation.
+- Ask questions that require understanding concepts, not just recalling facts.
+- Include questions that ask why or how something works.
+- Distractors should be plausible but clearly wrong to someone who studied.
+- Example: "Why do plants need CO2?" or "How does the greenhouse effect work?"
 """,
     "advanced": """
-Assume strong prior knowledge.
-Ask application, analysis, and scenario-based questions.
-Use more challenging distractors.
-Require the student to apply concepts, compare tradeoffs, identify edge cases, or reason through examples.
-Avoid simple definition-only questions.
+- Ask questions that require applying knowledge to new situations.
+- Ask students to compare two concepts, identify cause and effect, or predict outcomes.
+- Distractors must be concepts also found in the notes so students must think carefully.
+- Do NOT ask "which statement is true" — ask students to reason through a scenario.
+- Example: "If CO2 were removed from the atmosphere, what would happen to liquid water on Earth?"
+- Example: "A student claims photosynthesis causes warming. What evidence from the notes contradicts this?"
 """,
 }
 
