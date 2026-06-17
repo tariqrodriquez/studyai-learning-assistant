@@ -7,13 +7,12 @@ const API = "https://studyai-learning-assistant.onrender.com";
 // ─── KaTeX renderer ──────────────────────────────────────────────────────────
 // Renders inline $...$ math expressions using KaTeX if available,
 // otherwise falls back to plain text.
+// At the top of App.jsx, with your other imports
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
 function MathText({ text }) {
   if (!text) return null;
-
-  let katex;
-  try { katex = require("katex"); } catch { /* katex not installed yet */ }
-
-  if (!katex) return <span>{text}</span>;
 
   const parts = text.split(/(\$[^$]+\$)/g);
   return (
@@ -31,7 +30,7 @@ function MathText({ text }) {
               />
             );
           } catch {
-            return <span key={i}>{part}</span>;
+            return <span key={i}>{math}</span>;
           }
         }
         return <span key={i}>{part}</span>;
