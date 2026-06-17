@@ -198,6 +198,7 @@ DIFFICULTY_ADDONS_QUIZ = {
 - Ask questions that require applying knowledge to new situations.
 - Ask students to compare two concepts, identify cause and effect, or predict outcomes.
 - Distractors must be concepts also found in the notes so students must think carefully.
+- Minimum of 11 questions
 - Do NOT ask "which statement is true" — ask students to reason through a scenario.
 - Example: "If CO2 were removed from the atmosphere, what would happen to liquid water on Earth?"
 - Example: "A student claims photosynthesis causes warming. What evidence from the notes contradicts this?"
