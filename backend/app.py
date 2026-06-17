@@ -17,6 +17,11 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB
+
+@app.errorhandler(413)
+def file_too_large(e):
+    return jsonify({"error": "File too large. Maximum size is 10MB."}), 413
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -372,7 +377,7 @@ Difficulty level: {difficulty.upper()}
 {GROUNDING_RULES}
 
 Study Material:
-{latest_extracted_text[:8000]}
+{latest_extracted_text[:20000]}
 """
 
     try:
@@ -629,7 +634,7 @@ PARAGRAPHS TO VERIFY:
 {json.dumps([{"index": i, "text": p} for i, p in enumerate(paragraphs)])}
 
 SOURCE DOCUMENT:
-{latest_extracted_text[:8000]}
+{latest_extracted_text[:20000]}
 """
 
     try:

@@ -97,7 +97,7 @@ function DifficultySelector({ value, onChange }) {
   );
 }
 
-// ─── Flashcard flip ─────────────────────────────────────────────────
+// ─── Flashcard flip mech ─────────────────────────────────────────────────
 function Flashcard({ card, index, total }) {
   const [flipped, setFlipped] = useState(false);
   return (
@@ -259,7 +259,7 @@ function UploadPage({
 
   return (
     <div>
-      {/* Difficulty selector — always visible once a file is uploaded */}
+      {/* Difficulty selector  always visible once a file is uploaded */}
       {preview && (
         <div className="card" style={{ marginBottom: "16px" }}>
           <div className="card-title-row">
@@ -757,6 +757,11 @@ function App() {
 
   const handleUpload = async () => {
     if (!file) { alert("Please choose a PDF or DOCX file first."); return; }
+    const MAX_SIZE = 10 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      alert("File too large. Maximum size is 10MB.");
+      return;
+    }
     const formData = new FormData();
     formData.append("file", file);
     const userId = localStorage.getItem("userId");
