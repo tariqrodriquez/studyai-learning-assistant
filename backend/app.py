@@ -191,17 +191,24 @@ DIFFICULTY_ADDONS_QUIZ = {
     "intermediate": """
 - Ask questions that require understanding concepts, not just recalling facts.
 - Include questions that ask why or how something works.
-- Distractors should be plausible and based of study material. Make the user actually think.
+- Distractors should be plausible and based on study material. Make the user actually think.
 - Example: "Why do plants need CO2?" or "How does the greenhouse effect work?"
 """,
     "advanced": """
 - Ask questions that require applying knowledge to new situations.
 - Ask students to compare two concepts, identify cause and effect, or predict outcomes.
 - Distractors must be concepts also found in the notes so students must think carefully.
-- Minimum of 11 questions
+- Minimum of 11 questions.
 - Do NOT ask "which statement is true" — ask students to reason through a scenario.
-- Example: "If CO2 were removed from the atmosphere, what would happen to liquid water on Earth?"
-- Example: "A student claims photosynthesis causes warming. What evidence from the notes contradicts this?"
+- Write all questions and answer choices in clear, natural academic English.
+- Every answer choice must sound like a real exam option — no clipped or note-style phrasing.
+- Each answer choice must be a complete, grammatically natural sentence or phrase.
+- Bad: "Earth would be ice-covered with no liquid water"
+- Good: "Earth's surface would freeze entirely, leaving no liquid water"
+- Bad: "South Pole measurements would lead Mauna Loa"
+- Good: "CO2 readings at the South Pole would surpass those recorded at Mauna Loa"
+- Example question: "If CO2 were removed from the atmosphere, what would happen to liquid water on Earth?"
+- Example question: "A student claims photosynthesis causes warming. What evidence from the notes contradicts this?"
 """,
 }
 
