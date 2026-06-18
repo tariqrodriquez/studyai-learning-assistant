@@ -385,7 +385,7 @@ Difficulty level: {difficulty.upper()}
 {GROUNDING_RULES}
 
 Study Material:
-{latest_extracted_text[:20000]}
+{latest_extracted_text[:8000]}
 """
 
     try:
@@ -642,7 +642,7 @@ PARAGRAPHS TO VERIFY:
 {json.dumps([{"index": i, "text": p} for i, p in enumerate(paragraphs)])}
 
 SOURCE DOCUMENT:
-{latest_extracted_text[:20000]}
+{latest_extracted_text[:8000]}
 """
 
     try:
